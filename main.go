@@ -35,12 +35,15 @@ func calculateRouteValue(route string, routeGraphValueMap map[string]int) string
 	return fmt.Sprintf("%d", routeValue)
 }
 
-func calculateNoOfStopsInRoute(routes []string, stops int) string {
+// takes an array of routes and calculates the number of routes that have a max
+// no. of stops indicated, this is calculated by checking the no. of stops and
+// subtracting one
+func calculateNoOfStopsInRoute(routes []string, maxStops int) string {
 	totalStops := 0
 	// now we can calculate the routes
 	for _, route := range routes {
 		routeNodes := strings.Split(route, "")
-		if len(routeNodes)-1 <= stops {
+		if len(routeNodes)-1 <= maxStops {
 			totalStops++
 		}
 	}
